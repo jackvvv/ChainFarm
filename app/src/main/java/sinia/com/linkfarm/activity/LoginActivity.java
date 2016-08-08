@@ -5,6 +5,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.NotEmpty;
+import com.mobsandgeeks.saripaar.annotation.Order;
+import com.mobsandgeeks.saripaar.annotation.Pattern;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -16,8 +21,12 @@ import sinia.com.linkfarm.base.BaseActivity;
  */
 public class LoginActivity extends BaseActivity {
 
+    @Pattern(regex = "^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$", message = "请输入正确的手机号码")
+    @Order(1)
     @Bind(R.id.et_phone)
     EditText etPhone;
+    @NotEmpty(message = "请输入密码")
+    @Order(2)
     @Bind(R.id.et_password)
     EditText etPassword;
     @Bind(R.id.tv_login)
@@ -33,6 +42,8 @@ public class LoginActivity extends BaseActivity {
     @Bind(R.id.tv_weibo)
     TextView tvWeibo;
 
+    private Validator validator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +51,7 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
         getBackView().setVisibility(View.GONE);
         getDoingView().setVisibility(View.GONE);
+        validator = new Validator(this);
     }
 
     @OnClick({R.id.tv_login, R.id.tv_register, R.id.tv_find_pwd, R.id.tv_qq, R.id.tv_wechat, R.id
@@ -47,7 +59,7 @@ public class LoginActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
-                showToast("ss");
+                validator.validate();
                 break;
             case R.id.tv_register:
                 startActivityForNoIntent(RegisterActivity.class);

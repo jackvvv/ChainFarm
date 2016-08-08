@@ -15,4 +15,6 @@
     <color name="rect">#aae84e40</color>
     <color name="shadow">#25808080</color>
     <color name="line">#ffd3dde6</color>
+    <color name="price_color">#DB2220</color>
+
 </resources>

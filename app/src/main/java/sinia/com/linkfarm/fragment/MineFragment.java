@@ -14,6 +14,11 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import sinia.com.linkfarm.R;
+import sinia.com.linkfarm.activity.AddressManagerActivity;
+import sinia.com.linkfarm.activity.MyCollectActivity;
+import sinia.com.linkfarm.activity.MyCouponsActivity;
+import sinia.com.linkfarm.activity.MyExpandActivity;
+import sinia.com.linkfarm.activity.MyFootPrintActivity;
 import sinia.com.linkfarm.activity.MyOrderActivity;
 import sinia.com.linkfarm.activity.PersonalCenterActivty;
 import sinia.com.linkfarm.base.BaseFragment;
@@ -129,6 +134,8 @@ public class MineFragment extends BaseFragment {
                 startActivity(intent);
                 break;
             case R.id.rl_yhq:
+                intent = new Intent(getActivity(), MyCouponsActivity.class);
+                startActivity(intent);
                 break;
             case R.id.rl_tuihuo:
                 intent = new Intent(getActivity(), MyOrderActivity.class);
@@ -136,12 +143,20 @@ public class MineFragment extends BaseFragment {
                 startActivity(intent);
                 break;
             case R.id.rl_my_collect:
+                intent = new Intent(getActivity(), MyCollectActivity.class);
+                startActivity(intent);
                 break;
             case R.id.rl_foot:
+                intent = new Intent(getActivity(), MyFootPrintActivity.class);
+                startActivity(intent);
                 break;
             case R.id.rl_address_manager:
+                intent = new Intent(getActivity(), AddressManagerActivity.class);
+                startActivity(intent);
                 break;
             case R.id.rl_tuiguang:
+                intent = new Intent(getActivity(), MyExpandActivity.class);
+                startActivity(intent);
                 break;
         }
     }
