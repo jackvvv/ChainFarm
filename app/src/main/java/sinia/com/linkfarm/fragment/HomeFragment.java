@@ -1,5 +1,6 @@
 package sinia.com.linkfarm.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,6 +19,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import sinia.com.linkfarm.R;
+import sinia.com.linkfarm.activity.LocationActivity;
+import sinia.com.linkfarm.activity.MessageActivity;
+import sinia.com.linkfarm.activity.SearchActivity;
 import sinia.com.linkfarm.adapter.HomeRecommendAdapter;
 import sinia.com.linkfarm.base.BaseFragment;
 import sinia.com.linkfarm.utils.AppInfoUtil;
@@ -33,7 +38,7 @@ public class HomeFragment extends BaseFragment {
     @Bind(R.id.tv_search_type)
     TextView tvSearchType;
     @Bind(R.id.et_content)
-    EditText etContent;
+    TextView etContent;
     @Bind(R.id.img_search)
     ImageView imgSearch;
     @Bind(R.id.tv_scan)
@@ -62,8 +67,10 @@ public class HomeFragment extends BaseFragment {
     ImageView imgLeftBottom;
     @Bind(R.id.img_right_big)
     ImageView imgRightBig;
+    @Bind(R.id.rl_search)
+    RelativeLayout rl_search;
     private MyGridView gridView;
-    private  SlideShowView mySlideShowView;
+    private SlideShowView mySlideShowView;
     private View rootView;
     private List<String> picList = new ArrayList<String>();
     private HomeRecommendAdapter adapter;
@@ -84,7 +91,7 @@ public class HomeFragment extends BaseFragment {
         gridView = (MyGridView) rootView.findViewById(R.id.gridView);
         mySlideShowView.getLayoutParams().height = h;
         picList.add("http://ms.bdimg.com/pacific/upload_7627579_1452595285589.jpg");
-        picList.add("http://ms.bdimg.com/pacific/upload_21326881_1467970596086.jpg");
+        picList.add("http://s0.hao123img.com/res/r/image/2016-08-08/1f58389341fa9c8ad43a5dfd30c94dac.jpg");
         picList.add("http://ms.bdimg.com/pacific/upload_7822730_1442385980400.jpg");
         picList.add("http://s0.hao123img.com/res/r/image/2016-08-04/8b03028a8651b44d1e255d6724b43c61.jpg");
         picList.add("https://img.alicdn.com/tps/i4/TB1IUeBLXXXXXX8XFXXSutbFXXX.jpg");
@@ -95,17 +102,23 @@ public class HomeFragment extends BaseFragment {
         gridView.setAdapter(adapter);
     }
 
-    @OnClick({R.id.tv_locate, R.id.tv_search_type, R.id.tv_scan, R.id.tv_msg})
+    @OnClick({R.id.tv_locate, R.id.tv_scan, R.id.tv_msg, R.id.rl_search})
     public void onClick(View view) {
+        Intent intent;
         switch (view.getId()) {
             case R.id.tv_locate:
-                showToast("aa");
+                intent = new Intent(getActivity(), LocationActivity.class);
+                startActivity(intent);
                 break;
-            case R.id.tv_search_type:
+            case R.id.rl_search:
+                intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tv_scan:
                 break;
             case R.id.tv_msg:
+                intent = new Intent(getActivity(), MessageActivity.class);
+                startActivity(intent);
                 break;
         }
     }

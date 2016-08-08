@@ -54,6 +54,12 @@
         <activity android:name=".activity.EditAddressActivity" />
         <activity android:name=".activity.MyExpandActivity" />
         <activity android:name=".activity.PointRecordActivity" />
+        <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.ServiceActivity" />
+        <activity android:name=".activity.MessageActivity" />
+        <activity android:name=".activity.ShopDetailActivity" />
+        <activity android:name=".activity.LocationActivity" />
+        <activity android:name=".activity.ApplyReturnActivity" />
         <activity
             android:name=".activity.PersonalCenterActivty"
             android:configChanges="orientation|keyboardHidden|screenSize"
